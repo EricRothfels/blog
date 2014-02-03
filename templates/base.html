@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+  <script type="text/javascript" src="/static/jquery-v1.10.2.js"></script>
+  <script type="text/javascript" src="/static/main.js"></script>
+  <title>EpicBlog</title>
+</head>
+
+<body>
+<div id="container">
+  <a href="/blog" class="main-title">EpicBlog</a>
+  
+  {% if logged_in_username: %}
+  <!-- action buttons -->
+  <div style="margin-bottom:20px;">
+    <span class="actionLink">
+        <a href="/blog/newpost" class="blog-link">Create New Post</a>
+    </span>
+    {% if editpage: %}
+        <span class="actionLink">
+            <a href="/_edit{{editpage}}" class="blog-link">Edit This Page</a>
+        </span>
+        <span class="actionLink">
+            <a href="/_history{{historypage}}" class="blog-link">View Page History</a>
+        </span>
+    {% endif %}
+  </div>
+  {% endif %}
+        
+  <div id="content">
+      {% block content %}
+      {% endblock %}
+  </div>
+</div>
+
+  <div id="footer">   
+      <hr>
+      {% if logged_in_username: %}
+        <span id="login">
+            <span class="loginLink">
+                <a href="/blog/logout" class="blog-link">{{logged_in_username}} (Sign out)</a>
+            </span>
+        </span>
+      {% else: %}
+        <span id="login">
+            <span class="loginLink">
+                <a href="/blog/login" id="signIn" class="blog-link">Sign in</a>
+            </span>
+            <span class="loginLink">
+                <a href="/blog/signup" id="register" class="blog-link">Register</a>
+            </span>
+        </span>
+      {% endif %}
+
+      <span id="queried">
+        {% if queried: %}
+            Queried {{queried}} seconds ago
+        {% endif %}
+      </span>
+  </div>
+  
+  <div class="modal"></div>
+  
+  <script>
+    $(document).ready(function() {
+        //bindRegisterClickHandler();
+        bindLogInClickHandler();
+    });
+  </script>
+</body>
+</html>
+

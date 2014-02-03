@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{post.render() | safe}}
+  
+  {% if page_content: %}
+     {{page_content | safe}}
+  {% endif %}
+
+  
+{% endblock %}

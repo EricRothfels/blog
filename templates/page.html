@@ -1,0 +1,15 @@
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title">
+        <a href="/_view{{p.path}}/{{p.page_number}}" style="text-decoration:none; color:black;">View this page</a>
+    </div>
+
+    <div class="post-date">
+      {{p.created.strftime("%b %d, %Y")}}
+    </div>
+  </div>
+  
+    <div class="post-content">
+     <a href="/_revert{{p.path}}/{{p.page_number}}" style="text-decoration:none; color:black;">Revert to this Page</a>
+  </div>
+</div>

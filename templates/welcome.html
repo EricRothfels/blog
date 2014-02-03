@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Welcome, {{logged_in_username}}!</h2>
+    
+    {% if page_content: %}
+     {{page_content | safe}}
+    {% endif %}
+
+{% endblock %}
